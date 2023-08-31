@@ -95,6 +95,10 @@ pub fn build(b: *std.Build) void {
     sdl_img.defineCMacro("LOAD_PNG", "1");
     sdl_img.linkSystemLibrary("libpng16");
 
+    sdl.installHeader("SDL/include/SDL.h", "SDL2");
+    sdl_ttf.installHeader("SDL_ttf/SDL_ttf.h", "SDL2");
+    sdl_img.installHeader("SDL_img/SDL_image.h", "SDL2_image");
+
     b.installArtifact(sdl);
     b.installArtifact(sdl_ttf);
     b.installArtifact(sdl_img);
