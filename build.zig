@@ -79,7 +79,9 @@ pub fn build(b: *std.Build) void {
             }, linux_config_h_vals);
             sdl.addConfigHeader(config_header);
             sdl_ttf.addConfigHeader(config_header);
+            sdl_img.addConfigHeader(config_header);
             sdl.step.dependOn(&config_header.step);
+            sdl_img.step.dependOn(&config_header.step);
             sdl_ttf.step.dependOn(&config_header.step);
             sdl.installConfigHeader(config_header, .{
                 .dest_rel_path = "SDL2/SDL_config_linux.h",
