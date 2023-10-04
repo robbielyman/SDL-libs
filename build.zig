@@ -64,7 +64,7 @@ pub fn build(b: *std.Build) void {
         },
         else => {
             sdl.linkSystemLibraryPkgConfigOnly("libdecor-0");
-            sdl.linkSystemLibrary("dbus-1.0");
+            sdl.linkSystemLibraryPkgConfigOnly("dbus-1");
             sdl.linkSystemLibraryPkgConfigOnly("libpipewire-0.3");
             sdl.linkSystemLibrary("drm");
             sdl.linkSystemLibraryPkgConfigOnly("libspa-0.2");
