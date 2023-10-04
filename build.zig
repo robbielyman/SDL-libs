@@ -68,6 +68,7 @@ pub fn build(b: *std.Build) void {
             sdl.linkSystemLibraryPkgConfigOnly("libpipewire-0.3");
             sdl.linkSystemLibraryPkgConfigOnly("libdrm");
             sdl.linkSystemLibraryPkgConfigOnly("libspa-0.2");
+            sdl.addIncludePath(.{ .path = "SDL/wayland-generated-protocols" });
             sdl.addCSourceFiles(&linux_src_files, &.{});
             sdl.addCSourceFiles(&wayland_src_files, &.{});
             const config_header = b.addConfigHeader(.{
