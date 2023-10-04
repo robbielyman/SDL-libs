@@ -67,7 +67,7 @@ pub fn build(b: *std.Build) void {
             sdl.linkSystemLibrary("dbus-1.0");
             sdl.linkSystemLibraryPkgConfigOnly("libpipewire-0.3");
             sdl.linkSystemLibrary("drm");
-            sdl.linkSystemLibraryPkgConfigOnly("spa-0.3");
+            sdl.linkSystemLibraryPkgConfigOnly("libspa-0.2");
             sdl.addCSourceFiles(&linux_src_files, &.{});
             sdl.addCSourceFiles(&wayland_src_files, &.{});
             const config_header = b.addConfigHeader(.{
