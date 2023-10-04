@@ -63,16 +63,11 @@ pub fn build(b: *std.Build) void {
             sdl.linkFramework("Foundation");
         },
         else => {
-            sdl.addIncludePath(.{ .cwd_relative = "/usr/include/libdecor-0" });
-            sdl.addIncludePath(.{ .cwd_relative = "/usr/include/dbus-1.0" });
-            sdl.addIncludePath(.{ .cwd_relative = "/usr/lib/dbus-1.0/include" });
-            sdl.addIncludePath(.{ .cwd_relative = "/usr/lib/x86_64-linux-gnu/dbus-1.0/include" });
-            // need this too for fedora
-            sdl.addIncludePath(.{ .cwd_relative = "/usr/lib64/dbus-1.0/include"});
-            sdl.addIncludePath(.{ .cwd_relative = "/usr/include/pipewire-0.3" });
-            sdl.addIncludePath(.{ .cwd_relative = "/usr/include/spa-0.2" });
-            sdl.addIncludePath(.{ .cwd_relative = "/usr/include/libdrm" });
-            sdl.addIncludePath(.{ .path = "SDL/wayland-generated-protocols" });
+            sdl.linkLibrary("decor");
+            sdl.linkLibrary("dbus");
+            sdl.linkLibrary("pipewire");
+            sdl.linkLibrary("drm");
+            sdl.linkLibrary("spa");
             sdl.addCSourceFiles(&linux_src_files, &.{});
             sdl.addCSourceFiles(&wayland_src_files, &.{});
             const config_header = b.addConfigHeader(.{
