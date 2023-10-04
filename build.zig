@@ -63,11 +63,11 @@ pub fn build(b: *std.Build) void {
             sdl.linkFramework("Foundation");
         },
         else => {
-            sdl.linkSystemLibrary("decor");
-            sdl.linkSystemLibrary("dbus");
-            sdl.linkSystemLibrary("pipewire");
+            sdl.linkSystemLibraryPkgConfigOnly("libdecor-0");
+            sdl.linkSystemLibrary("dbus-1.0");
+            sdl.linkSystemLibraryPkgConfigOnly("pipewire-0.3");
             sdl.linkSystemLibrary("drm");
-            sdl.linkSystemLibrary("spa");
+            sdl.linkSystemLibraryPkgConfigOnly("spa-0.3");
             sdl.addCSourceFiles(&linux_src_files, &.{});
             sdl.addCSourceFiles(&wayland_src_files, &.{});
             const config_header = b.addConfigHeader(.{
